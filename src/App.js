@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import { FaGripLines, FaTimes } from 'react-icons/fa';
+import HeartRate from './components/HeartRate';
+import InfoBlock from './components/InfoBlock';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component{
+  constructor(){
+    super();
+    this.state={
+        open: false
+    }
+  }
+  render(){
+      const {open} = this.state;
+      return (
+          <div className="App">
+              {open?<FaTimes onClick={()=>this.setState({open:false})} className="nav open"/>:<FaGripLines onClick={()=>this.setState({open:true})} className="nav"/>}
+              <InfoBlock isOpen={open}/>
+              <HeartRate isOpen={open}/>
+          </div>
+      );
+  }
 }
 
 export default App;
