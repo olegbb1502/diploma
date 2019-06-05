@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import UpdatePatient from './UpdatePatient';
+import ResetBoard from './ResetBoard';
 
 class InfoBlock extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             name: '',
-            reset: false,
-            modalWindow: false
+            age: '',
+            sex: '',
+            smoke: false,
+            bp: '',
+            modalWindow: false,
+            updateInfoWindow: false
         }
 
         this.resetBoard = this.resetBoard.bind(this);
@@ -26,69 +26,72 @@ class InfoBlock extends Component{
         info.on('value', (snapshot)=>{
            let item = snapshot.val();
            this.setState({
-               name: item.name,
-               reset: item.reset
+               name: item.patient.name,
+               age: item.patient.age,
+               sex: item.patient.sex,
+               smoke: item.patient.smoke,
+               bp: item.patient.bp,
+               reset: item.board.reset
            })
         });
     }
 
-    handleClose() {
+    handleClose(val) {
         this.setState({
             modalWindow: false
         })
     }
 
-    resetBoard(){
-        firebase.database().ref("info").set({
+    resetBoard(val){
+        firebase.database().ref("info/board").set({
             reset: true
         });
+        this.handleClose();
+    }
 
+    handleToUpdate = (val) => {
         this.setState({
-            reset: true
+            updateInfoWindow: false
+        })
+    }
+    userUpdate = (newData) => {
+        console.log(newData)
+        this.setState({
+            updateInfoWindow: false
         })
     }
 
+
     render(){
-        const {name, reset, modalWindow} = this.state;
+        const {name, age, sex, smoke, bp, modalWindow, updateInfoWindow} = this.state;
         const {isOpen} = this.props;
+        console.log(name)
         return(
             <div className={isOpen?"info open":"info"}>
-                <h2>{name}</h2>
+                <div className="top">
+                    <h2>{name}</h2>
+                    <div className="data">
+                        <p>Age: {age}</p>
+                        <p>Sex: {sex}</p>
+                        <p>Smoking: {smoke? "smokes" : "doesn't smoke"}</p>
+                        <p>Blood pressure: {bp}</p>
+                    </div>
+                </div>
                 <div className="bottom">
-                    <button className="settings">Settings</button>
+                    <button className="settings" onClick={()=>{this.setState({updateInfoWindow: true})}}>Settings</button>
                     <button className="reset" onClick={()=>{this.setState({modalWindow: true})}}>Reset</button>
                 </div>
-                {/*<div className={modalWindow ? "modal open" : "modal"}>*/}
-                    {/*<div className="box">*/}
-                        {/*<h3>Restart system</h3>*/}
-                        {/*<p>After restarting system all data will deleted from database. When system launch it connects to WiFi automatically.</p>*/}
-                        {/*<div className="buttons">*/}
-                            {/*<button onClick={()=>{this.setState({modalWindow: false})}}>Cancel</button>*/}
-                            {/*<button onClick={this.resetBoard}>Reload board</button>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
-                <Dialog
-                    open={modalWindow}
-                    onClose={this.handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">{"Restart system"}</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            After restarting system all data will deleted from database. When system launch it connects to WiFi automatically.
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
-                            Cancel
-                        </Button>
-                        <Button onClick={this.resetBoard} variant="contained" color="secondary">
-                            Reload Board
-                        </Button>
-                    </DialogActions>
-                </Dialog>
+                <UpdatePatient
+                    updateInfoWindow={updateInfoWindow}
+                    handleClose = {this.handleToUpdate}
+                    updateInfo={this.userUpdate}
+                    name={name}
+                    age={age}
+                    sex={sex}
+                    smoke={smoke}
+                    bp={bp}
+                />
+                <ResetBoard modalWindow={modalWindow} handleToClose={this.handleClose} handleToReset={this.resetBoard}/>
             </div>
         );
     }
