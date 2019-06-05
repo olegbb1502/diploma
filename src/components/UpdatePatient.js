@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import firebase from './firebase';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -27,31 +26,34 @@ class UpdatePatient extends Component{
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount(){
-        const {name, age, sex, smoke, bp} = this.props;
-        this.setState({
-            newData: {
-                name: name,
-                age: age,
-                sex: sex,
-                smoke: smoke,
-                bp: bp
-            }
-        })
-    }
+    // componentDidMount(){
+    //     const {name, age, sex, smoke, bp} = this.props;
+    //     this.setState({
+    //         newData: {
+    //             name: name,
+    //             age: age,
+    //             sex: sex,
+    //             smoke: smoke,
+    //             bp: bp
+    //         }
+    //     })
+    // }
 
     handleChange = event => {
-        const {newData} = this.state;
+        const{handler}=this.props;
+        // const {newData} = this.state;
+
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        const newItem = {
-            ...newData,
-            [name]: value
-        };
-        this.setState({
-            newData: newItem
-        })
+        // const newItem = {
+        //     ...newData,
+        //     [name]: value
+        // };
+        handler([name], value);
+        // this.setState({
+        //     newData: newItem
+        // })
     }
 
     render(){
@@ -91,8 +93,7 @@ class UpdatePatient extends Component{
                         value={newData.sex}
                         onChange={this.handleChange}
                         inputProps={{
-                            name: 'sex',
-                            id: 'sex',
+                            name: 'sex'
                         }}
                     >
                         <MenuItem value={"male"}>Male</MenuItem>

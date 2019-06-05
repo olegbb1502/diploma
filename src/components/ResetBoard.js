@@ -7,10 +7,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class ResetBoard extends Component{
-    constructor(props){
-        super(props);
-    }
-
     render(){
         const {modalWindow} = this.props;
         var handleToReset  =   this.props.handleToReset;

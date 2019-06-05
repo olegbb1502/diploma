@@ -64,7 +64,7 @@ class HeartRate extends Component {
         ];
 
         items.map((item, i)=>{
-            data[0].points[i] = {x: i, y: item.data}
+            return data[0].points[i] = {x: i, y: item.data}
         });
 
         return(

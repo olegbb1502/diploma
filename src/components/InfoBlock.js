@@ -60,12 +60,15 @@ class InfoBlock extends Component{
             updateInfoWindow: false
         })
     }
-
+    handlerState=(key, value)=>{
+        this.setState({
+            key:value
+        })
+    }
 
     render(){
         const {name, age, sex, smoke, bp, modalWindow, updateInfoWindow} = this.state;
         const {isOpen} = this.props;
-        console.log(name)
         return(
             <div className={isOpen?"info open":"info"}>
                 <div className="top">
@@ -82,6 +85,7 @@ class InfoBlock extends Component{
                     <button className="reset" onClick={()=>{this.setState({modalWindow: true})}}>Reset</button>
                 </div>
                 <UpdatePatient
+                    handler={this.handlerState}
                     updateInfoWindow={updateInfoWindow}
                     handleClose = {this.handleToUpdate}
                     updateInfo={this.userUpdate}
