@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="27e2f55a-ee2b-4a36-8513-554b09d3977a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HeartRate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeartRate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/InfoBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResetBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResetBoard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UpdatePatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdatePatient.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/InfoBlock.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+            <state relative-caret-position="945">
+              <caret line="66" column="30" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -43,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/UpdatePatient.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+            <state relative-caret-position="360">
+              <caret line="115" column="33" lean-forward="true" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -55,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/ResetBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="30">
               <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -67,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/HeartRate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
+            <state relative-caret-position="930">
               <caret line="66" column="35" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="35" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -133,9 +131,9 @@
         <option value="$PROJECT_DIR$/src/components/FirebaseInit.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/components/InfoBlock.js" />
         <option value="$PROJECT_DIR$/src/components/ResetBoard.js" />
         <option value="$PROJECT_DIR$/src/components/HeartRate.js" />
+        <option value="$PROJECT_DIR$/src/components/InfoBlock.js" />
         <option value="$PROJECT_DIR$/src/components/UpdatePatient.js" />
       </list>
     </option>
@@ -215,12 +213,15 @@
       <workItem from="1557851765523" duration="170000" />
       <workItem from="1559278447563" duration="2152000" />
       <workItem from="1559732745304" duration="13000" />
-      <workItem from="1559735875512" duration="1391000" />
+      <workItem from="1559735875512" duration="1493000" />
+      <workItem from="1559739702040" duration="813000" />
+      <workItem from="1559747256340" duration="63000" />
+      <workItem from="1559750304624" duration="918000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41518000" />
+    <option name="totallyTimeSpent" value="43414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="32" width="1920" height="1050" extended-state="6" />
@@ -239,7 +240,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33984798" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33984798" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -277,6 +278,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/InfoBlock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="66" column="30" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ResetBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HeartRate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="66" column="35" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-linechart/dist/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -302,40 +333,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ResetBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HeartRate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="66" column="35" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/InfoBlock.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UpdatePatient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        <state relative-caret-position="360">
+          <caret line="115" column="33" lean-forward="true" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

@@ -26,37 +26,38 @@ class UpdatePatient extends Component{
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount(){
-    //     const {name, age, sex, smoke, bp} = this.props;
-    //     this.setState({
-    //         newData: {
-    //             name: name,
-    //             age: age,
-    //             sex: sex,
-    //             smoke: smoke,
-    //             bp: bp
-    //         }
-    //     })
-    // }
+    componentDidMount(){
+        const {name, age, sex, smoke, bp} = this.props;
+        this.setState({
+            newData: {
+                name: name,
+                age: age,
+                sex: sex,
+                smoke: smoke,
+                bp: bp
+            }
+        })
+    }
 
     handleChange = event => {
-        const{handler}=this.props;
-        // const {newData} = this.state;
+        const {handler} = this.props;
+        const {newData} = this.state;
 
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        // const newItem = {
-        //     ...newData,
-        //     [name]: value
-        // };
-        handler([name], value);
-        // this.setState({
-        //     newData: newItem
-        // })
+        const newItem = {
+            ...newData,
+            [name]: value
+        };
+        handler(name, value);
+        this.setState({
+            newData: newItem
+        })
     }
 
     render(){
+        // const {name, age, sex, smoke, bp} = this.props;
         const {updateInfoWindow} = this.props;
         const {newData} = this.state;
         var handleClose  =   this.props.handleClose;
@@ -106,6 +107,13 @@ class UpdatePatient extends Component{
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                         type="checkbox"
                         name="smoke"
+                    />
+                    <TextField
+                        value={newData.bp}
+                        margin="dense"
+                        label="Blood pressure"
+                        onChange={this.handleChange}
+                        name="bp"
                     />
                 </DialogContent>
                 <DialogActions>

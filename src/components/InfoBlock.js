@@ -64,6 +64,7 @@ class InfoBlock extends Component{
         this.setState({
             key:value
         })
+        console.log(this.state)
     }
 
     render(){
