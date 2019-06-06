@@ -13,53 +13,35 @@ class UpdatePatient extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            newData: {
-                name: 'Oleg',
-                age: '20',
-                sex: 'male',
-                smoke: false,
-                bp: 0,
-            }
-        }
+        // this.state = {
+        //     newData: {
+        //         name: 'Oleg',
+        //         age: 20,
+        //         sex: 'male',
+        //         smoke: false,
+        //         bp: 0,
+        //     }
+        // }
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
-        const {name, age, sex, smoke, bp} = this.props;
-        this.setState({
-            newData: {
-                name: name,
-                age: age,
-                sex: sex,
-                smoke: smoke,
-                bp: bp
-            }
-        })
+
     }
 
     handleChange = event => {
         const {handler} = this.props;
-        const {newData} = this.state;
 
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        const newItem = {
-            ...newData,
-            [name]: value
-        };
+        const name = event.target.name;
+
         handler(name, value);
-        this.setState({
-            newData: newItem
-        })
     }
 
     render(){
-        // const {name, age, sex, smoke, bp} = this.props;
-        const {updateInfoWindow} = this.props;
-        const {newData} = this.state;
+        const {name, age, sex, smoke, bp, updateInfoWindow} = this.props;
         var handleClose  =   this.props.handleClose;
         var updateInfo  =   this.props.updateInfo;
         // console.log(this.state.newData)
@@ -73,7 +55,7 @@ class UpdatePatient extends Component{
                 <DialogTitle id="alert-dialog-title">{`Update patient information`}</DialogTitle>
                 <DialogContent>
                     <TextField
-                        value={newData.name}
+                        value={name}
                         margin="dense"
                         id="name"
                         label="Name"
@@ -82,7 +64,7 @@ class UpdatePatient extends Component{
                         name="name"
                     />
                     <TextField
-                        value={newData.age}
+                        value={age}
                         margin="dense"
                         id="age"
                         label="Age"
@@ -91,7 +73,7 @@ class UpdatePatient extends Component{
                         name="age"
                     />
                     <Select
-                        value={newData.sex}
+                        value={sex}
                         onChange={this.handleChange}
                         inputProps={{
                             name: 'sex'
@@ -101,7 +83,7 @@ class UpdatePatient extends Component{
                         <MenuItem value={"female"}>Female</MenuItem>
                     </Select>
                     <Switch
-                        checked={newData.smoke}
+                        checked={smoke}
                         onChange={this.handleChange}
                         color="primary"
                         inputProps={{ 'aria-label': 'primary checkbox' }}
@@ -109,7 +91,7 @@ class UpdatePatient extends Component{
                         name="smoke"
                     />
                     <TextField
-                        value={newData.bp}
+                        value={bp}
                         margin="dense"
                         label="Blood pressure"
                         onChange={this.handleChange}
@@ -120,7 +102,7 @@ class UpdatePatient extends Component{
                     <Button onClick={() => handleClose()} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={()=>updateInfo(newData)} variant="contained" color="secondary">
+                    <Button onClick={()=>updateInfo()} variant="contained" color="secondary">
                         Update data
                     </Button>
                 </DialogActions>

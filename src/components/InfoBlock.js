@@ -9,10 +9,10 @@ class InfoBlock extends Component{
 
         this.state = {
             name: '',
-            age: '',
-            sex: '',
+            age: 0,
+            sex: "male",
             smoke: false,
-            bp: '',
+            bp: 120,
             modalWindow: false,
             updateInfoWindow: false
         }
@@ -54,17 +54,18 @@ class InfoBlock extends Component{
             updateInfoWindow: false
         })
     }
+
     userUpdate = (newData) => {
         console.log(newData)
         this.setState({
             updateInfoWindow: false
         })
     }
+
     handlerState=(key, value)=>{
         this.setState({
-            key:value
+            key: value
         })
-        console.log(this.state)
     }
 
     render(){
