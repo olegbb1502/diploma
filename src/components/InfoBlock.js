@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
+import {FaBatteryThreeQuarters} from 'react-icons/fa';
 import UpdatePatient from './UpdatePatient';
 import ResetBoard from './ResetBoard';
 
@@ -8,30 +9,40 @@ class InfoBlock extends Component{
         super(props);
 
         this.state = {
-            name: '',
-            age: 0,
-            sex: "male",
-            smoke: false,
-            bp: 120,
+            data: {
+                name: '',
+                age: '',
+                sex: '',
+                smoke: false,
+                bp: '',
+                battery: 0,
+            },
             modalWindow: false,
-            updateInfoWindow: false
+            updateInfoWindow: false,
         }
 
         this.resetBoard = this.resetBoard.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleInputFunction = this.handleInputFunction.bind(this);
     }
 
     componentDidMount(){
+        const {data} = this.state;
         const info = firebase.database().ref("info");
         info.on('value', (snapshot)=>{
            let item = snapshot.val();
-           this.setState({
+           const dataFromBd = {
+               ...data,
                name: item.patient.name,
                age: item.patient.age,
                sex: item.patient.sex,
                smoke: item.patient.smoke,
                bp: item.patient.bp,
-               reset: item.board.reset
+               reset: item.board.reset,
+               battery: item.board.battery
+           }
+           this.setState({
+               data: dataFromBd
            })
         });
     }
@@ -54,32 +65,44 @@ class InfoBlock extends Component{
             updateInfoWindow: false
         })
     }
-
-    userUpdate = (newData) => {
-        console.log(newData)
+    userUpdate = () => {
         this.setState({
             updateInfoWindow: false
         })
+        firebase.database().ref("info/patient").set(this.state.data);
     }
-
-    handlerState=(key, value)=>{
+    handleInputFunction(e) {
+        let target = e.target;
+        const {data} = this.state;
+        const newData = {
+            ...data,
+            [target.name]: target.type === "checkbox" ? target.checked : target.value
+        }
         this.setState({
-            key: value
-        })
+            data: newData
+        });
+        console.log(this.state)
     }
 
     render(){
-        const {name, age, sex, smoke, bp, modalWindow, updateInfoWindow} = this.state;
+        const {data, modalWindow, updateInfoWindow} = this.state;
         const {isOpen} = this.props;
         return(
             <div className={isOpen?"info open":"info"}>
                 <div className="top">
-                    <h2>{name}</h2>
+                    <h2>{data.name}</h2>
                     <div className="data">
-                        <p>Age: {age}</p>
-                        <p>Sex: {sex}</p>
-                        <p>Smoking: {smoke? "smokes" : "doesn't smoke"}</p>
-                        <p>Blood pressure: {bp}</p>
+                        <p>Age: {data.age}</p>
+                        <p>Sex: {data.sex}</p>
+                        <p>Smoking: {data.smoke? "smokes" : "doesn't smoke"}</p>
+                        <p>Blood pressure: {data.bp}</p>
+                        <div>
+                            <p>Battery level</p>
+                            <div className="battery">
+                                <FaBatteryThreeQuarters/>
+                                <p>{data.battery}%</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="bottom">
@@ -87,15 +110,15 @@ class InfoBlock extends Component{
                     <button className="reset" onClick={()=>{this.setState({modalWindow: true})}}>Reset</button>
                 </div>
                 <UpdatePatient
-                    handler={this.handlerState}
+                    ourInputFunction={this.handleInputFunction}
                     updateInfoWindow={updateInfoWindow}
                     handleClose = {this.handleToUpdate}
                     updateInfo={this.userUpdate}
-                    name={name}
-                    age={age}
-                    sex={sex}
-                    smoke={smoke}
-                    bp={bp}
+                    name={data.name}
+                    age={data.age}
+                    sex={data.sex}
+                    smoke={data.smoke}
+                    bp={data.bp}
                 />
                 <ResetBoard modalWindow={modalWindow} handleToClose={this.handleClose} handleToReset={this.resetBoard}/>
             </div>

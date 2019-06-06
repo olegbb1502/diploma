@@ -87,6 +87,8 @@ button{
   transition: all .3s;
   position: relative;
   z-index: 50;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .heart-monitor.open{
@@ -171,4 +173,26 @@ button{
   background-color: #007bff;
   border-color: #007bff;
   color: white;
+}
+
+.tick{
+  display: none;
+}
+
+#react-linechart-1559767558194{
+  width: 80vw !important;
+}
+
+#react-linechart-1559767558194 svg{
+  width: 100% !important;
+  height: auto !important;
+}
+
+.battery{
+  display: flex;
+  align-items: center;
+}
+
+.battery svg{
+  margin-right: 15px;
 }

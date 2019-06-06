@@ -13,35 +13,19 @@ class UpdatePatient extends Component{
     constructor(props){
         super(props);
 
-        // this.state = {
-        //     newData: {
-        //         name: 'Oleg',
-        //         age: 20,
-        //         sex: 'male',
-        //         smoke: false,
-        //         bp: 0,
-        //     }
-        // }
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    componentDidMount(){
-
-    }
-
-    handleChange = event => {
-        const {handler} = this.props;
-
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = event.target.name;
-
-        handler(name, value);
+        this.state = {
+            newData: {
+                name: 'Oleg',
+                age: '20',
+                sex: 'male',
+                smoke: false,
+                bp: 0,
+            }
+        }
     }
 
     render(){
-        const {name, age, sex, smoke, bp, updateInfoWindow} = this.props;
+        const {updateInfoWindow, ourInputFunction, name, age, sex, smoke, bp} = this.props;
         var handleClose  =   this.props.handleClose;
         var updateInfo  =   this.props.updateInfo;
         // console.log(this.state.newData)
@@ -60,8 +44,8 @@ class UpdatePatient extends Component{
                         id="name"
                         label="Name"
                         fullWidth
-                        onChange={this.handleChange}
                         name="name"
+                        onChange={ourInputFunction}
                     />
                     <TextField
                         value={age}
@@ -69,12 +53,12 @@ class UpdatePatient extends Component{
                         id="age"
                         label="Age"
                         fullWidth
-                        onChange={this.handleChange}
+                        onChange={ourInputFunction}
                         name="age"
                     />
                     <Select
                         value={sex}
-                        onChange={this.handleChange}
+                        onChange={ourInputFunction}
                         inputProps={{
                             name: 'sex'
                         }}
@@ -84,7 +68,7 @@ class UpdatePatient extends Component{
                     </Select>
                     <Switch
                         checked={smoke}
-                        onChange={this.handleChange}
+                        onChange={ourInputFunction}
                         color="primary"
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                         type="checkbox"
@@ -93,9 +77,10 @@ class UpdatePatient extends Component{
                     <TextField
                         value={bp}
                         margin="dense"
+                        id="name"
                         label="Blood pressure"
-                        onChange={this.handleChange}
                         name="bp"
+                        onChange={ourInputFunction}
                     />
                 </DialogContent>
                 <DialogActions>
