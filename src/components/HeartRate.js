@@ -10,7 +10,7 @@ class HeartRate extends Component {
         this.state = {
             items: [],
             bpm: 0,
-            connect: ''
+            connect: false
         }
     }
 
@@ -69,18 +69,19 @@ class HeartRate extends Component {
 
         return(
             <div className={isOpen ? "heart-monitor open" : "heart-monitor"}>
-                <h2 className="bpm">
+                <div className="bpm">
                     <FaHeartbeat className="heart"  />
                     {bpm}
-                 </h2>
-                {connect ? "" : <p className="not-connect">Lose connection</p>}
+                 </div>
+                {!connect ? "" : <p className="not-connect">Lose connection</p>}
                 <LineChart
+                    className="ecg"
                     height={400}
                     data={data}
                     hideXLabel={true}
                     hideYLabel={true}
-                    hideXAxis={true}
-                    hideYAxis={true}
+                    // hideXAxis={true}
+                    // hideYAxis={true}
                     hidePoints={true}
                     interpolate={"Linear"}
                 />

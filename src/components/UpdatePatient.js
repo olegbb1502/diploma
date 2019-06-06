@@ -22,43 +22,10 @@ class UpdatePatient extends Component{
                 bp: 0,
             }
         }
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    // componentDidMount(){
-    //     const {name, age, sex, smoke, bp} = this.props;
-    //     this.setState({
-    //         newData: {
-    //             name: name,
-    //             age: age,
-    //             sex: sex,
-    //             smoke: smoke,
-    //             bp: bp
-    //         }
-    //     })
-    // }
-
-    handleChange = event => {
-        const{handler}=this.props;
-        // const {newData} = this.state;
-
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        // const newItem = {
-        //     ...newData,
-        //     [name]: value
-        // };
-        handler([name], value);
-        // this.setState({
-        //     newData: newItem
-        // })
     }
 
     render(){
-        const {updateInfoWindow} = this.props;
-        const {newData} = this.state;
+        const {updateInfoWindow, ourInputFunction, name, age, sex, smoke, bp} = this.props;
         var handleClose  =   this.props.handleClose;
         var updateInfo  =   this.props.updateInfo;
         // console.log(this.state.newData)
@@ -72,26 +39,26 @@ class UpdatePatient extends Component{
                 <DialogTitle id="alert-dialog-title">{`Update patient information`}</DialogTitle>
                 <DialogContent>
                     <TextField
-                        value={newData.name}
+                        value={name}
                         margin="dense"
                         id="name"
                         label="Name"
                         fullWidth
-                        onChange={this.handleChange}
                         name="name"
+                        onChange={ourInputFunction}
                     />
                     <TextField
-                        value={newData.age}
+                        value={age}
                         margin="dense"
                         id="age"
                         label="Age"
                         fullWidth
-                        onChange={this.handleChange}
+                        onChange={ourInputFunction}
                         name="age"
                     />
                     <Select
-                        value={newData.sex}
-                        onChange={this.handleChange}
+                        value={sex}
+                        onChange={ourInputFunction}
                         inputProps={{
                             name: 'sex'
                         }}
@@ -100,19 +67,27 @@ class UpdatePatient extends Component{
                         <MenuItem value={"female"}>Female</MenuItem>
                     </Select>
                     <Switch
-                        checked={newData.smoke}
-                        onChange={this.handleChange}
+                        checked={smoke}
+                        onChange={ourInputFunction}
                         color="primary"
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                         type="checkbox"
                         name="smoke"
+                    />
+                    <TextField
+                        value={bp}
+                        margin="dense"
+                        id="name"
+                        label="Blood pressure"
+                        name="bp"
+                        onChange={ourInputFunction}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => handleClose()} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={()=>updateInfo(newData)} variant="contained" color="secondary">
+                    <Button onClick={()=>updateInfo()} variant="contained" color="secondary">
                         Update data
                     </Button>
                 </DialogActions>
